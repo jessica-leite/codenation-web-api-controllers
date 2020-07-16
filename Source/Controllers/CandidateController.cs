@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Codenation.Challenge.DTOs;
+using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -47,6 +48,15 @@ namespace Codenation.Challenge.Controllers
             }
 
             return NoContent();
+        }
+
+        // POST api/candidate
+        [HttpPost]
+        public ActionResult<CandidateDTO> Post([FromBody] CandidateDTO value)
+        {
+            var candidate = _service.Save(_mapper.Map<Candidate>(value));
+
+            return Ok(_mapper.Map<CandidateDTO>(candidate));
         }
     }
 }
