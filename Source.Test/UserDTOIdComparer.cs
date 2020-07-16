@@ -4,14 +4,14 @@ using Codenation.Challenge.DTOs;
 
 namespace Codenation.Challenge
 {
-    public class UserDTOIdComparer : IEqualityComparer<CompanyDTO>
+    public class UserDTOIdComparer : IEqualityComparer<UserDTO>
     {
-        public bool Equals(CompanyDTO x, CompanyDTO y)
+        public bool Equals(UserDTO x, UserDTO y)
         {
             return x.Id == y.Id;
         }
 
-        public int GetHashCode(CompanyDTO obj)
+        public int GetHashCode(UserDTO obj)
         {
             return obj.Id.GetHashCode();
         }

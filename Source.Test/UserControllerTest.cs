@@ -18,13 +18,13 @@ namespace Codenation.Challenge
         {
             var fakes = new Fakes();   
             var fakeService = fakes.FakeUserService().Object;
-            var expected = fakes.Mapper.Map<CompanyDTO>(fakeService.FindById(id));
+            var expected = fakes.Mapper.Map<UserDTO>(fakeService.FindById(id));
 
             var controller = new UserController(fakeService, fakes.Mapper);
             var result = controller.Get(id);
             
             Assert.IsType<OkObjectResult>(result.Result);
-            var actual = (result.Result as OkObjectResult).Value as CompanyDTO;
+            var actual = (result.Result as OkObjectResult).Value as UserDTO;
             Assert.NotNull(actual);
             Assert.Equal(expected, actual, new UserDTOIdComparer());
         }
@@ -34,14 +34,14 @@ namespace Codenation.Challenge
         {          
             var fakes = new Fakes();   
             var fakeService = fakes.FakeUserService().Object;
-            var expected = fakes.Get<CompanyDTO>().First();
+            var expected = fakes.Get<UserDTO>().First();
             expected.Id = 0;
 
             var controller = new UserController(fakeService, fakes.Mapper);
             var result = controller.Post(expected);
 
             Assert.IsType<OkObjectResult>(result.Result);
-            var actual = (result.Result as OkObjectResult).Value as CompanyDTO;
+            var actual = (result.Result as OkObjectResult).Value as UserDTO;
             Assert.NotNull(actual);
             Assert.Equal(999, actual.Id);
             Assert.Equal(expected.FullName, actual.FullName);

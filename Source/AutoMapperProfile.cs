@@ -8,8 +8,8 @@ namespace Codenation.Challenge
     {
         public AutoMapperProfile()
         {
-            CreateMap<User, CompanyDTO>().ReverseMap();
-            CreateMap<Company, CompanyDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<Company, UserDTO>().ReverseMap();
             CreateMap<Models.Challenge, ChallengeDTO>().ReverseMap();
             CreateMap<Acceleration, AccelerationDTO>().ReverseMap();
             CreateMap<Submission, SubmissionDTO>().ReverseMap();

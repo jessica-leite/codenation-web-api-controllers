@@ -25,9 +25,9 @@ namespace Codenation.Challenge
         public Fakes()
         {
             DataFileNames.Add(typeof(User), $"TestData{Path.DirectorySeparatorChar}users.json");
-            DataFileNames.Add(typeof(CompanyDTO), $"TestData{Path.DirectorySeparatorChar}users.json");
+            DataFileNames.Add(typeof(UserDTO), $"TestData{Path.DirectorySeparatorChar}users.json");
             DataFileNames.Add(typeof(Company), $"TestData{Path.DirectorySeparatorChar}companies.json");
-            DataFileNames.Add(typeof(CompanyDTO), $"TestData{Path.DirectorySeparatorChar}companies.json");
+            DataFileNames.Add(typeof(UserDTO), $"TestData{Path.DirectorySeparatorChar}companies.json");
             DataFileNames.Add(typeof(Models.Challenge), $"TestData{Path.DirectorySeparatorChar}companies.json");
             DataFileNames.Add(typeof(ChallengeDTO), $"TestData{Path.DirectorySeparatorChar}companies.json");
             DataFileNames.Add(typeof(Acceleration), $"TestData{Path.DirectorySeparatorChar}accelerations.json");
@@ -39,8 +39,8 @@ namespace Codenation.Challenge
 
             var configuration = new MapperConfiguration(cfg => 
             {
-                cfg.CreateMap<User, CompanyDTO>().ReverseMap();
-                cfg.CreateMap<Company, CompanyDTO>().ReverseMap();
+                cfg.CreateMap<User, UserDTO>().ReverseMap();
+                cfg.CreateMap<Company, UserDTO>().ReverseMap();
                 cfg.CreateMap<Models.Challenge, ChallengeDTO>().ReverseMap();
                 cfg.CreateMap<Acceleration, AccelerationDTO>().ReverseMap();
                 cfg.CreateMap<Submission, SubmissionDTO>().ReverseMap();
