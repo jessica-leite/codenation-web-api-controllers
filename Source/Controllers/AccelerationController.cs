@@ -34,9 +34,9 @@ namespace Codenation.Challenge.Controllers
         {
             if (companyId.HasValue)
             {
-                var companies = _service.FindByCompanyId(companyId.Value);
+                var accelerations = _service.FindByCompanyId(companyId.Value);
 
-                return Ok(_mapper.Map<IEnumerable<AccelerationDTO>>(companies));
+                return Ok(_mapper.Map<IEnumerable<AccelerationDTO>>(accelerations));
             }
 
             return NoContent();
