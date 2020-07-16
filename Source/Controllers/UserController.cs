@@ -47,7 +47,9 @@ namespace Codenation.Challenge.Controllers
         [HttpGet("{id}")]
         public ActionResult<UserDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var user = _service.FindById(id);
+
+            return Ok(_mapper.Map<UserDTO>(user));
         }
 
         // POST api/user
