@@ -56,7 +56,9 @@ namespace Codenation.Challenge.Controllers
         [HttpPost]
         public ActionResult<UserDTO> Post([FromBody] UserDTO value)
         {
-            throw new NotImplementedException();
+            var user = _service.Save(_mapper.Map<User>(value));
+
+            return Ok(user);
         }
 
     }
