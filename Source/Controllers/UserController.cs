@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Codenation.Challenge.DTOs;
 using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Codenation.Challenge.Controllers
 {
@@ -60,6 +58,5 @@ namespace Codenation.Challenge.Controllers
 
             return Ok(user);
         }
-
     }
 }
