@@ -32,5 +32,14 @@ namespace Codenation.Challenge.Controllers
 
             return Ok(_mapper.Map<IEnumerable<ChallengeDTO>>(challenges));
         }
+
+        // POST api/challenge
+        [HttpPost]
+        public ActionResult<ChallengeDTO> Post([FromBody] ChallengeDTO value)
+        {
+            var challenge = _service.Save(_mapper.Map<Models.Challenge>(value));
+
+            return Ok(_mapper.Map<ChallengeDTO>(challenge));
+        }
     }
 }
