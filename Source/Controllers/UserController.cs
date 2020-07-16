@@ -22,20 +22,20 @@ namespace Codenation.Challenge.Controllers
 
         // GET api/user
         [HttpGet]
-        public ActionResult<IEnumerable<UserDTO>> GetAll(string accelerationName = null, int? companyId = null)
+        public ActionResult<IEnumerable<CompanyDTO>> GetAll(string accelerationName = null, int? companyId = null)
         {
             if (!string.IsNullOrWhiteSpace(accelerationName) && companyId == null)
             {
                 var users = _service.FindByAccelerationName(accelerationName);
 
-                return Ok(_mapper.Map<IEnumerable<UserDTO>>(users));
+                return Ok(_mapper.Map<IEnumerable<CompanyDTO>>(users));
             }
 
             if (companyId.HasValue && accelerationName == null)
             {
                 var users = _service.FindByCompanyId(companyId.Value);
 
-                return Ok(_mapper.Map<IEnumerable<UserDTO>>(users));
+                return Ok(_mapper.Map<IEnumerable<CompanyDTO>>(users));
             }
 
             return NoContent();
@@ -43,16 +43,16 @@ namespace Codenation.Challenge.Controllers
 
         // GET api/user/{id}
         [HttpGet("{id}")]
-        public ActionResult<UserDTO> Get(int id)
+        public ActionResult<CompanyDTO> Get(int id)
         {
             var user = _service.FindById(id);
 
-            return Ok(_mapper.Map<UserDTO>(user));
+            return Ok(_mapper.Map<CompanyDTO>(user));
         }
 
         // POST api/user
         [HttpPost]
-        public ActionResult<UserDTO> Post([FromBody] UserDTO value)
+        public ActionResult<CompanyDTO> Post([FromBody] CompanyDTO value)
         {
             var user = _service.Save(_mapper.Map<User>(value));
 

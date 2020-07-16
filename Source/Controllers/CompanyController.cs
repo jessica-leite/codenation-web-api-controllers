@@ -2,6 +2,7 @@
 using Codenation.Challenge.DTOs;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Codenation.Challenge.Controllers
 {
@@ -25,6 +26,27 @@ namespace Codenation.Challenge.Controllers
             var company = _service.FindById(id);
 
             return Ok(_mapper.Map<CompanyDTO>(company));
+        }
+
+        // GET api/company
+        [HttpGet]
+        public ActionResult<IEnumerable<CompanyDTO>> GetAll(int? accelerationId = null, int? userId = null)
+        {
+            if (accelerationId.HasValue && userId == null)
+            {
+                var companies = _service.FindByAccelerationId(accelerationId.Value);
+
+                return Ok(_mapper.Map<IEnumerable<CompanyDTO>>(companies));
+            }
+
+            if (userId.HasValue && accelerationId == null)
+            {
+                var companies = _service.FindByUserId(userId.Value);
+
+                return Ok(_mapper.Map<IEnumerable<CompanyDTO>>(companies));
+            }
+
+            return NoContent();
         }
     }
 }

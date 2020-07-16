@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codenation.Challenge.DTOs
 {
-    public class UserDTO
+    public class CompanyDTO
     {
         public int Id { get; set; }
         [Required]
