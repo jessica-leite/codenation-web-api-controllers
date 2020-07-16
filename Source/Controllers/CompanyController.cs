@@ -56,7 +56,7 @@ namespace Codenation.Challenge.Controllers
         {
             var company = _service.Save(_mapper.Map<Company>(value));
 
-            return Ok(company);
+            return Ok(_mapper.Map<CompanyDTO>(company));
         }
     }
 }

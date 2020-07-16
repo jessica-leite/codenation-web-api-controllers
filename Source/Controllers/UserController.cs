@@ -56,7 +56,7 @@ namespace Codenation.Challenge.Controllers
         {
             var user = _service.Save(_mapper.Map<User>(value));
 
-            return Ok(user);
+            return Ok(_mapper.Map<UserDTO>(user));
         }
     }
 }
