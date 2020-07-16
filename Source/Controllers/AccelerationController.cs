@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Codenation.Challenge.DTOs;
+using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -40,6 +41,15 @@ namespace Codenation.Challenge.Controllers
             }
 
             return NoContent();
+        }
+
+        // POST api/acceleration
+        [HttpPost]
+        public ActionResult<AccelerationDTO> Post([FromBody] AccelerationDTO value)
+        {
+            var acceleration = _service.Save(_mapper.Map<Acceleration>(value));
+
+            return Ok(_mapper.Map<AccelerationDTO>(acceleration));
         }
     }
 }
