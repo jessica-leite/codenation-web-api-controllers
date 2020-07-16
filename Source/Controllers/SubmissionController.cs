@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Codenation.Challenge.DTOs;
-using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Codenation.Challenge.Controllers
 {
@@ -24,7 +21,7 @@ namespace Codenation.Challenge.Controllers
 
         // GET api/submission/higherScore
         [HttpGet("higherScore")]
-        public ActionResult<decimal> GetAll(int? challengeId = null)
+        public ActionResult<decimal> GetHigherScore(int? challengeId = null)
         {
             if (challengeId.HasValue)
             {
@@ -34,6 +31,20 @@ namespace Codenation.Challenge.Controllers
             }
 
             return NoContent();
+        }
+
+        // GET api/submission
+        [HttpGet]
+        public ActionResult<IEnumerable<SubmissionDTO>> GetAll(int? challengeId = null, int? accelerationId = null)
+        {
+            if (challengeId == null && accelerationId == null)
+            {
+                return NoContent();
+            }
+
+            var submissions = _service.FindByChallengeIdAndAccelerationId(challengeId.GetValueOrDefault(), accelerationId.GetValueOrDefault());
+
+            return Ok(_mapper.Map<IEnumerable<SubmissionDTO>>(submissions));
         }
     }
 }
